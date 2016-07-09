@@ -1,0 +1,94 @@
+<!doctype html>
+<html ng-app="simplonR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SimplonR</title>
+    <link rel="stylesheet" href="web/css/bootstrap.min.css">
+    <link rel="stylesheet" href="web/font-awesome/css/font-awesome.min.css">
+    <!--    <link rel="stylesheet" href="web/css/style.css">-->
+    <style>
+        body {
+            padding-top: 30px;
+        }
+        
+        .fa{
+            margin : 3px; 
+        }
+        
+        small {
+            display: block;
+            line-height: 1.5;
+            color: #999;
+        }
+    </style>
+</head>
+
+<body ng-controller="ApprenantsController as apprenantCtrl">
+<section class="container">
+    
+    <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="apprenant in apprenantCtrl.products">
+        <div class="well well-sm">
+            <div class="row">
+                <div class="col-sm-6 col-md-4">
+                    <img src="http://theawesomer.com/photos/2010/06/060410_Facebook_profile_pic_1.jpg" class="img-rounded img-responsive"/>
+                </div>
+                <div class="col-sm-6 col-md-8">
+                    <h4> {[{apprenant.firstname}]} {[{apprenant.surname | uppercase}]}</h4>
+                    <small><cite title="city">{[{ apprenant.birth_place }]}<i class="fa fa-map-marker">
+                        </i></cite></small>
+                    <p>
+                        <i class="fa fa-envelope"></i>{[{ apprenant.email }]}
+                        <br />
+                        <i class="fa fa-globe"></i><a href="#">{[{ apprenant.codecademy_profile }]}</a>
+                        <br />
+                        <i class="fa fa-gift"></i>{[{ apprenant.birth_date | date }]}
+                        <br />
+                        <i class="fa fa-globe"></i>{[{ apprenant.creation_date | date }]}</p>
+                </div>
+                <a href="#" ng-click="apprenantCtrl.del(apprenant.id)">Delete</a>
+                <a href="#" ng-click="apprenantCtrl.selectEdit(apprenant.id)">Edit</a>
+            </div>
+        </div>
+    </div>
+    
+    <form class="col-xs-12 col-sm-6 col-md-4">
+    <div class="well well-sm">
+            <div class="row">
+                <div class="col-sm-6 col-md-4">
+                    <img src="http://theawesomer.com/photos/2010/06/060410_Facebook_profile_pic_1.jpg" class="img-rounded img-responsive"/>
+                </div>
+                <div class="col-sm-6 col-md-8">
+                    <h4> <input type="text" ng-model="apprenantCtrl.firstname"> <input type="text" ng-model="apprenantCtrl.surname"></h4>
+                    <small><cite title="city"><input type="text" ng-model="apprenantCtrl.birth_place"><i class="fa fa-map-marker">
+                        </i></cite></small>
+                    <p>
+                        <i class="fa fa-envelope"></i><input type="mail" ng-model="apprenantCtrl.email">
+                        
+                        <br />
+                        <i class="fa fa-globe"></i><input type="text" ng-model="apprenantCtrl.codecademy_profile">
+                        <br />
+                        <i class="fa fa-gift"></i><input type="date" ng-model="apprenantCtrl.birth_date">
+                        </p>
+                </div>
+                <input type="button" value="Add" ng-click="apprenantCtrl.add()">
+            </div>
+        </div>
+    </form>
+        
+
+</section>
+
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-resource.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="web/js/jquery.js"></script>
+    <script type="text/javascript" src="web/js/app.js"></script>
+</body>
+
+</html>
